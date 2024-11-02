@@ -13,7 +13,7 @@ namespace EnsekTests
         // e.g. from CI pipeline and substitute the hardcoded values
 
         //These parametes control the test execution
-        public static readonly EnvironmentId EnvironmentId = EnvironmentId.QA;
+        public static readonly EnvironmentId EnvironmentId = EnvironmentId.DEV;
         public static readonly LoggerId LoggerId = LoggerId.Log4Net;
 
         public static readonly LogLevel LogLevel = LogLevel.Debug;

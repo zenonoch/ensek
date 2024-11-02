@@ -12,7 +12,5 @@ namespace Framework.Environment
     {
         EnvironmentId Id {get;}
         Uri BaseUri { get; }
-
-        string Token {get;}
     }
 }

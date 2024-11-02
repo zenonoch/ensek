@@ -10,7 +10,6 @@ namespace Framework.Environment
         // Run test using: dotnet test --settings test.runsettings
         public EnvironmentId Id => EnvironmentId.DEV;
         public Uri BaseUri => new Uri(TestContext.Parameters["BaseUri"]?? throw new Exception("Could not evaluate BaseUri"));
-        public string Token => TestContext.Parameters["Token"]?? throw new Exception("Could not evaluate Token");
  }
 
 }

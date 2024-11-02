@@ -12,7 +12,6 @@ namespace Framework.Environment
         // Potentially other enviromnets (or all of them) may read config data from Azure AppConfiguration (- an idea for a future extension)
         public EnvironmentId Id => EnvironmentId.QA;
         public Uri BaseUri => new Uri(@"https://qacandidatetest.ensek.io/");
-        public string Token => "";
         
     }
 

@@ -94,7 +94,7 @@ public class ApiTests:EnsekTestController
         return  m.Success ? m.Value : string.Empty;
     }
 
-    [Test]
+    [Test][HighPriority]
     public void TestScenario()
     {
         

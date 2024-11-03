@@ -5,7 +5,6 @@ namespace Framework.Environment;
 public enum EnvironmentId 
     {
         QA,
-        DEV
     }
 public interface IEnvironment
 {

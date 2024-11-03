@@ -9,9 +9,7 @@ public static class EnvironmentFactory
             switch (envType)
             {
                 case EnvironmentId.QA:
-                    return new Environment_QA();
-                case EnvironmentId.DEV:
-                    return new Environment_DEV();
+                    return new Environment();
                 default:
                     throw new Exception($"Environment '{envType}' is not supported.");
             }

@@ -9,7 +9,7 @@ namespace EnsekTests;
 
 public class ApiTests:EnsekTestController
 {
-    [Test]
+    [Test][HighPriority]
     public void ResetTest()
     {
         // Arrange
@@ -44,7 +44,7 @@ public class ApiTests:EnsekTestController
 
     }
 
-    [Test]
+    [Test][MediumPriority]
     public void BuyQuantityOfEachFuel()
     {
         // Arrange
@@ -107,7 +107,7 @@ public class ApiTests:EnsekTestController
             });
         }
     }
-    [Test]
+    [Test][LowPriority]
     public void NumberOfOrdersBeforeToday()
     {
         var token = GetAuthToken();

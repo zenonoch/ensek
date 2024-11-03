@@ -6,7 +6,6 @@ using System.Text.RegularExpressions;
 
 namespace EnsekTests;
 
-
 public class ApiTests:EnsekTestController
 {
     private string GetAuthToken()

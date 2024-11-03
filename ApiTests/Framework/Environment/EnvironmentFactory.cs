@@ -1,9 +1,8 @@
 using System;
 
-namespace Framework.Environment
-{
-    // Creates instances of Environments
-    public static class EnvironmentFactory
+namespace Framework.Environment;
+// Creates instances of Environments
+public static class EnvironmentFactory
     {
         public static IEnvironment Create(EnvironmentId envType)
         {
@@ -18,4 +17,3 @@ namespace Framework.Environment
             }
         }
     }
-}

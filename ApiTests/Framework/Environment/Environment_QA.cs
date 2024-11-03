@@ -1,9 +1,9 @@
 using System;
 using NUnit.Framework;
 
-namespace Framework.Environment
-{
-    public class Environment_QA : IEnvironment
+namespace Framework.Environment;
+
+public class Environment_QA : IEnvironment
     {
         // QA Environment in this demo project uses hard-coded values (never in production!)
         // Each environment (DEV, RC) in this solution is represented by different class
@@ -15,4 +15,3 @@ namespace Framework.Environment
         
     }
 
-}

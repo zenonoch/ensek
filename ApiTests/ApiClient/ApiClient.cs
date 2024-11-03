@@ -5,9 +5,9 @@ using Framework.Logger;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace EnsekClient
-{
-    public class ApiClient 
+namespace EnsekClient;
+
+public class ApiClient 
     {
         public IEnvironment Environment {get;}
         public ILogger Logger {get;}
@@ -70,4 +70,3 @@ namespace EnsekClient
         }
     }
 
-}

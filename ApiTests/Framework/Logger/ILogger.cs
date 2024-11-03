@@ -1,17 +1,16 @@
 ﻿
-namespace Framework.Logger
+namespace Framework.Logger;
+public enum LoggerId {
+    Log4Net
+}
+public enum LogLevel
 {
-    public enum LoggerId {
-        Log4Net
-    }
-    public enum LogLevel
-    {
-        Debug,
-        Info,        
-        Warning,
-        Error
-    }
-    public interface ILogger
+    Debug,
+    Info,        
+    Warning,
+    Error
+}
+public interface ILogger
     {        
         public LoggerId Id { get; }
         public LogLevel Level { get; }
@@ -22,4 +21,4 @@ namespace Framework.Logger
 
         public void Initialize();
     }
-}
+

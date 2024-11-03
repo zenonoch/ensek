@@ -1,8 +1,8 @@
 using System;
 
-namespace Framework.Logger
-{
-    public static class LoggerFactory
+namespace Framework.Logger;
+
+public static class LoggerFactory
     {
         public static ILogger Create(LoggerId loggerType, LogLevel logLevel=LogLevel.Info)
         {
@@ -17,4 +17,3 @@ namespace Framework.Logger
             }
         }
     }
-}

@@ -1,5 +1,5 @@
 # ensek
 ENSEK Test
 ˙
-usage:
+Executing tests:
 dotnet test -s test.runsettings --filter Category=HighPriority

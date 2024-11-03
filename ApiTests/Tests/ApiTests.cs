@@ -25,11 +25,57 @@ public class ApiTests:EnsekTestController
 
         var token = GetAuthToken();
 
+        // Buy random amount of each available energy to change the available amount
+        var energies = GetEnergy(token);
+        var requestedOrders = new List<(string Id, string Fuel, int Quantity)>();
+        Logger.Info($"Number of Energies: {energies.Count}");
+        
+        var energiesAvailableToBuy = energies.Where(e => e.Value.QuantityOfUnits > 0).ToList();
+
+        Random rnd = new Random();
+        foreach (var energy in energiesAvailableToBuy)
+        {
+            Logger.Info($"Energy: {energy.Key}");
+            Logger.Info($"EnergyId: {energy.Value.EnergyId}");
+            Logger.Info($"Energy - PricePerUnit: {energy.Value.PricePerUnit}");
+            Logger.Info($"Energy - QuantityOfUnits: {energy.Value.QuantityOfUnits}");
+            Logger.Info($"Energy - UnitType: {energy.Value.UnitType}");
+            if (energy.Value.QuantityOfUnits >= 1)
+            {
+                var amount = rnd.Next(energy.Value.QuantityOfUnits + 1);
+                var orderId = PutOrder(token, energy.Value.EnergyId, amount);
+                if (orderId != string.Empty){
+                    requestedOrders.Add((orderId, energy.Key, amount));
+
+                    Logger.Info($"Requested order:");
+                    Logger.Info($"Order - Id: {orderId}");
+                    Logger.Info($"Order - Fuel: {energy.Key}");
+                    Logger.Info($"Order - Quantity: {amount}");
+                }
+            }
+        }
+
+        //Verify that the available energy is not equal the expected quantity after reset
+        
+        var actualEnergies = GetEnergy(token);
+        foreach (var ee in expectedEnergies)
+        {
+            var ae = actualEnergies[ee.Key];
+            Assert.Multiple(() =>
+            {
+                Assert.That(ee.Value.EnergyId, Is.EqualTo(ae.EnergyId), 
+                    $"The expected EnergyId for '{ee.Key}' was: {ee.Value.EnergyId}, actually got: {ae.EnergyId}");
+                Assert.That(ee.Value.QuantityOfUnits, ee.Value.QuantityOfUnits==0 ? Is.EqualTo(ae.QuantityOfUnits) : Is.Not.EqualTo(ae.QuantityOfUnits), 
+                    $"The expected QuantityOfUnits for '{ee.Key}' was: {ee.Value.QuantityOfUnits}, actually got: {ae.QuantityOfUnits}");
+            }); 
+        }
+
         // Act
+        // Reset should return the quantity of each energy to initial values
         Reset(token);
 
         // Assert
-        var actualEnergies = GetEnergy(token);
+        actualEnergies = GetEnergy(token);
         foreach (var ee in expectedEnergies)
         {
             var ae = actualEnergies[ee.Key];
